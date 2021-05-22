@@ -7,5 +7,12 @@ func StartBot() {
 	wd, seleniumService := newSeleniumWebDriver()
 	defer seleniumService.Stop()
 	defer wd.Close()
-	basicService.Login(wd, "csgobga5", "csgobga1234")
+	err := basicService.Login(wd, "csgobga5", "csgobga1234")
+	if err != nil {
+		panic(err)
+	}
+	err = basicService.GoToMainMenu(wd)
+	if err != nil {
+		panic(err)
+	}
 }
