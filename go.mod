@@ -17,4 +17,5 @@ require (
 	github.com/volatiletech/strmangle v0.0.1
 	go.uber.org/zap v1.15.0
 	gopkg.in/yaml.v2 v2.4.0 // indirect
+	rogchap.com/v8go v0.6.0 // indirect
 )

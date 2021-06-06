@@ -1,6 +1,9 @@
 package bot
 
-import "template/core/usecase"
+import (
+	"fmt"
+	"template/core/usecase"
+)
 
 func StartBot() {
 	basicService := usecase.NewBasicService()
@@ -15,4 +18,28 @@ func StartBot() {
 	if err != nil {
 		panic(err)
 	}
+	err = basicService.LikeByPostLink(wd,"https://www.instagram.com/p/CPq8gVHHbML/?utm_source=ig_web_copy_link")
+	if err != nil {
+		panic(err)
+	}
+	err = basicService.FollowByLink(wd, "https://www.instagram.com/neginzare.life/")
+	if err != nil {
+		panic(err)
+	}
+
+	err = basicService.GoToMainMenu(wd)
+	if err != nil {
+		panic(err)
+	}
+
+	err = basicService.UnFollowByLink(wd, "https://www.instagram.com/neginzare.life/")
+	if err != nil {
+		panic(err)
+	}
+
+	err = basicService.GoToMainMenu(wd)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("Everything is OK")
 }
