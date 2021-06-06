@@ -3,6 +3,7 @@ package bot
 import (
 	"fmt"
 	"github.com/tebeka/selenium"
+	"github.com/tebeka/selenium/chrome"
 	"os"
 )
 
@@ -26,6 +27,13 @@ func newSeleniumWebDriver() (selenium.WebDriver, *selenium.Service) {
 
 	// Connect to the WebDriver instance running locally.
 	caps := selenium.Capabilities{"browserName": "chrome"}
+
+	caps.AddChrome(chrome.Capabilities{
+		MobileEmulation:  &chrome.MobileEmulation{
+			DeviceName:    "iPhone X",
+		},
+	})
+
 	wd, err := selenium.NewRemote(caps, fmt.Sprintf("http://localhost:%d/wd/hub", port))
 	if err != nil {
 		panic(err)
